@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#F2C063">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="309dp"
+        android:layout_height="388dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/lon_lat_text"
+            android:layout_width="match_parent"
+            android:layout_height="98dp"
+            android:text="@string/location"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/speed_direction_text"
+            android:layout_width="match_parent"
+            android:layout_height="87dp"
+            android:text="@string/speed"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/accuracy_text"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="@string/accuracy"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="122dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/map_button"
+                android:layout_width="158dp"
+                android:layout_height="122dp"
+                android:background="#45BF92"
+                android:onClick="mapActivity"
+                android:text="@string/title_activity_maps" />
+
+            <Button
+                android:id="@+id/map_custom_button"
+                android:layout_width="152dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/custom_map"
+                android:onClick="mapActivityCustom"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
