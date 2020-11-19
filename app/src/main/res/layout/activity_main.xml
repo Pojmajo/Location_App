@@ -9,21 +9,13 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="309dp"
-        android:layout_height="388dp"
+        android:layout_width="342dp"
+        android:layout_height="711dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/lon_lat_text"
-            android:layout_width="match_parent"
-            android:layout_height="98dp"
-            android:text="@string/location"
-            android:textAlignment="center"
-            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/speed_direction_text"
@@ -38,6 +30,14 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:text="@string/accuracy"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lon_lat_text"
+            android:layout_width="match_parent"
+            android:layout_height="98dp"
+            android:text="@string/location"
             android:textAlignment="center"
             android:textStyle="bold" />
 
@@ -59,9 +59,28 @@
                 android:layout_width="152dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/custom_map"
-                android:onClick="mapActivityCustom"/>
+                android:onClick="mapActivityCustom"
+                android:text="@string/custom_map" />
+
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/preferenceTextView"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:text="@string/pref" />
+
+        <TextView
+            android:id="@+id/nmeaBox"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="@string/nmea" />
+
+        <TextView
+            android:id="@+id/statusBox"
+            android:layout_width="match_parent"
+            android:layout_height="151dp"
+            android:text="@string/gps_status" />
 
     </LinearLayout>
 

@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
+import android.graphics.Point;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,31 +24,31 @@ import com.google.android.gms.maps.model.PointOfInterest;
 
 public class MapFragment extends Fragment {
 
-    private OnMapReadyCallback callback = new OnMapReadyCallback() {
+    public interface OnDataPass {
+        void onDataPass(PointOfInterest poi);
+    }
+    OnDataPass dataPasser;
 
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
-        @Override
-        public void onMapReady(GoogleMap googleMap) {
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        dataPasser = (OnDataPass) context;
+    }
 
-            googleMap.setOnPoiClickListener(new GoogleMap.OnPoiClickListener() {
-                @Override
-                public void onPoiClick(PointOfInterest poi) {
-                    Toast.makeText(getContext(),poi.name +
-                                    "\nLatitude:" + poi.latLng.latitude +
-                                    "\nLongitude:" + poi.latLng.longitude,
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
+    public void passData(PointOfInterest poi) {
+        dataPasser.onDataPass(poi);
+    }
 
-        }
+
+    private OnMapReadyCallback callback = googleMap -> {
+        googleMap.setOnPoiClickListener(poi -> {
+            Toast.makeText(getContext(),poi.name +
+                            "\nLatitude:" + poi.latLng.latitude +
+                            "\nLongitude:" + poi.latLng.longitude,
+                    Toast.LENGTH_SHORT).show();
+        passData(poi);
+        });
+
     };
 
 

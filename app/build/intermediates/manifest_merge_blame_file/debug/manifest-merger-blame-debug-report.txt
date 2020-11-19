@@ -1,0 +1,133 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.location_app"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="29"
+8-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:50:5-67
+11-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:50:22-64
+12    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+12-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:51:5-79
+12-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:51:22-76
+13    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+13-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:52:5-80
+13-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:52:22-78
+14    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+14-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:53:5-81
+14-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:53:22-78
+15
+16    <!-- Include required permissions for Google Maps API to run. -->
+17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+17-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\faf3edd0a0a40b32e6c32885cc662e42\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
+17-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\faf3edd0a0a40b32e6c32885cc662e42\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:22-76
+18
+19    <uses-feature
+19-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\faf3edd0a0a40b32e6c32885cc662e42\jetified-play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
+20        android:glEsVersion="0x00020000"
+20-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\faf3edd0a0a40b32e6c32885cc662e42\jetified-play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
+21        android:required="true" />
+21-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\faf3edd0a0a40b32e6c32885cc662e42\jetified-play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
+22
+23    <application
+23-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:5:5-49:19
+24        android:allowBackup="true"
+24-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:6:9-35
+25        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+25-->[androidx.core:core:1.3.1] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\3975ffd70914deb17405b14313b8e4ba\core-1.3.1\AndroidManifest.xml:24:18-86
+26        android:debuggable="true"
+27        android:extractNativeLibs="false"
+28        android:icon="@mipmap/ic_launcher"
+28-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:7:9-43
+29        android:label="@string/app_name"
+29-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:8:9-41
+30        android:roundIcon="@mipmap/ic_launcher_round"
+30-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:9:9-54
+31        android:supportsRtl="true"
+31-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:10:9-35
+32        android:testOnly="true"
+33        android:theme="@style/Theme.Location_App" >
+33-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:11:9-50
+34        <activity android:name="com.example.location_app.MapCustomActivity" />
+34-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:12:9-64
+34-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:12:19-52
+35        <!--
+36             The API key for Google Maps-based APIs is defined as a string resource.
+37             (See the file "res/values/google_maps_api.xml").
+38             Note that the API key is linked to the encryption key used to sign the APK.
+39             You need a different API key for each encryption key, including the release key that is used to
+40             sign the APK for publishing.
+41             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+42        -->
+43        <activity android:name="com.example.location_app.MapActivity" />
+43-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:21:9-49
+43-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:21:19-46
+44        <!--
+45             The API key for Google Maps-based APIs is defined as a string resource.
+46             (See the file "res/values/google_maps_api.xml").
+47             Note that the API key is linked to the encryption key used to sign the APK.
+48             You need a different API key for each encryption key, including the release key that is used to
+49             sign the APK for publishing.
+50             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+51        -->
+52        <!--
+53             The API key for Google Maps-based APIs is defined as a string resource.
+54             (See the file "res/values/google_maps_api.xml").
+55             Note that the API key is linked to the encryption key used to sign the APK.
+56             You need a different API key for each encryption key, including the release key that is used to
+57             sign the APK for publishing.
+58             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+59        -->
+60        <activity android:name="com.example.location_app.MainActivity" >
+60-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:38:9-44:20
+60-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:38:19-47
+61            <intent-filter>
+61-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:39:13-43:29
+62                <action android:name="android.intent.action.MAIN" />
+62-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:40:17-69
+62-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:40:25-66
+63
+64                <category android:name="android.intent.category.LAUNCHER" />
+64-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:42:17-77
+64-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:42:27-74
+65            </intent-filter>
+66        </activity>
+67
+68        <meta-data
+68-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:46:9-48:55
+69            android:name="com.google.android.geo.API_KEY"
+69-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:47:13-58
+70            android:value="@string/google_maps_key" />
+70-->C:\Users\marci\AndroidStudioProjects\Location_App\app\src\main\AndroidManifest.xml:48:13-52
+71        <!-- Needs to be explicitly declared on P+ -->
+72        <uses-library
+72-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\faf3edd0a0a40b32e6c32885cc662e42\jetified-play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
+73            android:name="org.apache.http.legacy"
+73-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\faf3edd0a0a40b32e6c32885cc662e42\jetified-play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
+74            android:required="false" />
+74-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\faf3edd0a0a40b32e6c32885cc662e42\jetified-play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
+75
+76        <activity
+76-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+77            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+77-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+78            android:exported="false"
+78-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+79            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+79-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+80
+81        <meta-data
+81-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+82            android:name="com.google.android.gms.version"
+82-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+83            android:value="@integer/google_play_services_version" />
+83-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\marci\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+84    </application>
+85
+86</manifest>

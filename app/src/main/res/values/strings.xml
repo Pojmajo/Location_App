@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Location_App</string>
-    <string name="location">Localizacja</string>
+    <string name="location">Lokalizacja</string>
     <string name="speed">Prędkość oraz kierunek poruszania</string>
     <string name="accuracy">Dokładność</string>
     <string name="title_activity_maps">Map</string>
     <string name="custom_map">Custom Map</string>
-    <string name="distance">Odległość i kierunek</string>
+    <string name="distance">Odległość</string>
+    <string name="pref">Pref</string>
+    <string name="nmea">Nmea</string>
+    <string name="gps_status">GPS Status</string>
 </resources>

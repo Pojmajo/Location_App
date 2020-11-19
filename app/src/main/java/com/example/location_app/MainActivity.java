@@ -5,16 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
-import android.app.ActionBar;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.ColorDrawable;
-import android.icu.text.SimpleDateFormat;
+import android.location.GnssStatus;
+import android.location.GpsSatellite;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.location.OnNmeaMessageListener;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -29,16 +32,37 @@ public class MainActivity extends AppCompatActivity {
     private TextView lon_lan_text_view;
     private TextView speed_direction_text_view;
     private TextView accuracy_text_view;
+    private TextView nmeaBox;
+    private static final int PERMISSION_CODE = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         lm = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            String[] permission = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(permission, PERMISSION_CODE);
+            }
+            return;
+        }
+
+
+
         listener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
                 przetwarzajLokalizacje(location);
+                saveLocation(location);
+                SharedPreferences sp = getPreferences(MODE_PRIVATE);
+                sp.edit().putString("location", "gps:" + location.getLongitude() + " "+ location.getLatitude()).commit();
+                Date d = new Date();
+                sp.edit().putString("date",d.toString()).commit();
+                showDataFromPref();
             }
 
             @Override
@@ -60,16 +84,6 @@ public class MainActivity extends AppCompatActivity {
         lon_lan_text_view = (TextView) findViewById(R.id.lon_lat_text);
         speed_direction_text_view = (TextView) findViewById(R.id.speed_direction_text);
 
-        if (ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION) !=
-                PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this,
-                        Manifest.permission.ACCESS_COARSE_LOCATION) !=
-                        PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new
-                    String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
-            return;
-        }
         registerListener();
 
     }
@@ -103,6 +117,15 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
+        lm.addNmeaListener((OnNmeaMessageListener) (nmea, timestamp) -> {
+            nmeaBox = ((TextView)findViewById(R.id.nmeaBox));
+            saveNMEA(nmea);
+            if(nmea.contains("GPGSA")) {
+                nmeaBox.setText(nmea);
+            }
+            Log.i("satelliteNMEA", nmea);
+        });
+
     }
 
     private void saveNMEA(String nmeaStr) {
@@ -112,8 +135,7 @@ public class MainActivity extends AppCompatActivity {
         if (!myDir.exists()) {
             myDir.mkdirs();
         }
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String fname = "NMEA_" + timeStamp + "_" + "lab5";
+        String fname = "NMEA_LAB5";
         File file = new File (myDir, fname);
         try {
             boolean append = true;
@@ -127,16 +149,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void saveLocation(Location location, boolean saveFile) {
+    private void saveLocation(Location location) {
     FileOutputStream out = null;
     File root = getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
-    File myDir = new File(root + "/saved_nmea");
+    File myDir = new File(root + "/saved_location");
     if (!myDir.exists()) {
         myDir.mkdirs();
     }
     String location_info = location.getLatitude() + ";" + location.getLongitude();
-    String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-    String fname = "NMEA_" + timeStamp + "_" + "lab5";
+    String fname = "Location_LAB5.txt";
     File file = new File (myDir, fname);
     try {
         boolean append = true;
@@ -146,11 +167,14 @@ public class MainActivity extends AppCompatActivity {
     }
     PrintWriter pw = new PrintWriter(out);
     pw.println(location_info);
-    if(saveFile) {
-        pw.close();
-    }
+    pw.close();
     }
 
+    void showDataFromPref(){
+        SharedPreferences sp = getPreferences(MODE_PRIVATE);
+        TextView preftv = (TextView) findViewById(R.id.preferenceTextView);
+        preftv.setText(sp.getString("date","date:empty")+ "\n"+sp.getString("location","loc:empty"));
+    }
 
     Location prevLocation = null;
     private void przetwarzajLokalizacje(Location location) {
@@ -166,4 +190,5 @@ public class MainActivity extends AppCompatActivity {
         speed_direction_text_view.setText(speed_direction_info);
         prevLocation = location;
     }
+
 }
